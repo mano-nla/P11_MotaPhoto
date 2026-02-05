@@ -1,0 +1,254 @@
+/****** Chargement des polices Google Fonts ******/
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Light.ttf') format('TrueType');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/SpaceMono-BoldItalic.ttf') format('TrueType');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/SpaceMono-Italic.ttf') format('TrueType');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/SpaceMono-Regular.ttf') format('TrueType');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/****** Déclaration variables et mixin CSS ******/
+@mixin main-title-desktop {
+    font-family: 'Space Mono';
+    font-weight: 700;
+    font-style: italic;
+    font-size: 96px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin second-title-desktop {
+    font-family: 'Space Mono';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin third-title-desktop {
+    font-family: 'Space Mono';
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin description-photo-desktop {
+    font-family: 'Space Mono';
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin paragraphe-desktop {
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 14px;
+    color: #000000;
+}
+
+:root {
+    & h1 {
+        @include main-title-desktop;
+    }
+    & h2 {
+        @include second-title-desktop;
+    }
+    & h3 {
+        @include third-title-desktop;
+    }
+    & p {
+        @include paragraphe-desktop;
+    }
+}
+
+/****** Mise en page des menus header et footer desktop ******/
+.header {
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+    padding: 15px 146px;
+    &-logo {
+        height: 14px;
+        width: 216px;
+    }
+    &-menu-container {
+        display: flex;
+        align-items: center;
+        gap: 45px;
+    }
+    &-menu{
+        list-style: none;  
+        display: flex;
+        gap: 45px;
+    }
+}
+
+.header-menu a, .header-contact, .footer-menu a, .footer p{
+    font-family: 'Space Mono';
+    font-size: 16px; 
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+}
+
+.header-menu a:hover, .header-contact:hover, .footer-menu a:hover {
+    font-weight: 600;
+}
+
+.footer {
+    border-top: #000000 1px solid;
+    display: flex;
+    justify-content: center;
+    gap: 86px;
+    &-menu {
+        list-style: none;  
+        display: flex;
+        gap: 86px;
+    }
+}
+
+#topnav_hamburger_icon,
+#topnav_responsive_menu {
+    display: none;
+}
+
+/****** Responsive mobile ******/
+@media (max-width: 768px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        &-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 0;
+            gap:24px;
+            margin-bottom: 0;
+            margin-top: 40px;
+        }
+        & p {
+            margin: 0;
+        }
+    }
+
+    /* Menu burger responsive */
+    .header-menu-container {
+        display: none;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 25px 40px;
+        &-logo {
+            height: 9px;
+            width: 138px;
+        }
+    }
+    #topnav_hamburger_icon {
+        display: block;
+        position: relative;
+        width: 27px;
+        height: 18px;
+        & span {
+            display: block;
+            position: absolute;
+            height: 1.7px;
+            width: 27px;
+            background: #000;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.25s ease-in-out;
+            &:nth-child(1) {
+                top: 0px;
+                transform-origin: left top;
+            }
+            &:nth-child(2) {
+                top: 10px;
+            }
+            &:nth-child(3) {
+                top: 20px;
+                transform-origin: left bottom;
+            }
+        }
+        &.open {
+            & span:nth-child(1) {
+                width: 108%;
+                transform: rotate(45deg);
+            }
+            & span:nth-child(2) {
+                width: 0%;
+                opacity: 0;
+            }
+            & span:nth-child(3) {
+                width: 108%;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    #topnav_responsive_menu {
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 130px;
+        width: 100%;
+        height: 100vh;
+        transform: translate(0, -200%);
+        transition: transform 650ms ease-in-out;
+        background: #E00000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &.open {
+            transform: none;
+            position: fixed;
+        }
+        & ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style :none;
+            padding: 0;
+        } 
+    }
+    .header-menu a, .header-contact {
+        font-family: 'Space Mono';
+        font-size: 44px; 
+        text-transform: uppercase;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .header-menu {
+        margin-top: 200px;
+        gap: 25px;
+    }
+}
