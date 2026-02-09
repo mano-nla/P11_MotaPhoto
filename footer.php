@@ -3,6 +3,8 @@
     <p>Tous droits réservés</p>
 </footer>
 
-    <?php wp_footer(); ?>
+<?php get_template_part('templates_part/contact-modale'); ?>
+
+<?php wp_footer(); ?>
 </body>
 </html>

@@ -17,7 +17,7 @@
         <!-- Menu desktop -->
         <div class="header-menu-container">
         <?php wp_nav_menu(['theme_location'  => 'main-menu','container'=> 'nav','container_class' => 'header-nav','menu_class'=> 'header-menu']);?>        
-        <a href="/contact" class="header-contact">Contact</a>
+        <a href="#" data-open-modal class="header-contact">Contact</a>
         </div>  
 
         <!-- Icone burger -->
@@ -30,7 +30,7 @@
         <!-- Menu responsive -->
         <nav role="navigation" id="topnav_responsive_menu">
             <?php wp_nav_menu(['theme_location'  => 'main-menu','container'=> 'nav','container_class' => 'header-nav','menu_class'=> 'header-menu']);?>        
-            <a href="/contact" class="header-contact">Contact</a>
+            <a href="#" data-open-modal class="header-contact">Contact</a>
         </nav>
     </header>
 
