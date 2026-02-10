@@ -73,27 +73,22 @@
     color: #000000;
 }
 
-:root {
-    & h1 {
-        @include main-title-desktop;
-    }
-    & h2 {
-        @include second-title-desktop;
-    }
-    & h3 {
-        @include third-title-desktop;
-    }
-    & p {
-        @include paragraphe-desktop;
-    }
-}
+h1 { @include main-title-desktop; }
+h2 { @include second-title-desktop; }
+h3 { @include third-title-desktop; }
+p  { @include paragraphe-desktop; }
 
 /****** Mise en page des menus header et footer desktop ******/
 .header {
     display : flex;
     justify-content : space-between;
     align-items : center;
+    background-color: #ffffff;
+    position: sticky;
+	top:30px;
+	z-index: 999;
     padding: 15px 146px;
+    box-shadow: 0 4px 14px 10px rgba(0, 0, 0, 0.03);
     &-logo {
         height: 14px;
         width: 216px;
@@ -208,6 +203,12 @@
         font-size: 12px;
         color:  #000000;
         margin-bottom: 0;
+        transition: background-color 0.4s, color 0.4s;
+        &:hover {
+            background-color: #000000;
+            color: #ffffff;
+            cursor: pointer;
+        }
     }
     &-box {
         border: 1px solid #B8BBC2;
@@ -238,6 +239,106 @@
     font-size: 10px;
     font-family: 'Poppins';
     margin: 0
+}
+
+/****** Mise en page single-photos ******/
+main {
+    margin: 30px 145px;
+    z-index: 0;
+}
+.single-photo-content {
+    display: flex; 
+    gap: 20px;
+    &-description {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        border-bottom: #000000 1px solid;
+        & h1 {
+            @include second-title-desktop;
+            margin-bottom: 20px;
+            line-height: 60px;
+        }
+        & p {
+            @include description-photo-desktop;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+    }
+    &-photo {
+        width: 50vw;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+.single-photo-other {
+    height: 118px;
+    display: flex;
+    gap: 20px;
+    border-bottom: #000000 1px solid;
+    &-contact {
+        width: 50vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & h2 {
+            @include paragraphe-desktop;
+            font-style: normal;
+            text-transform: none;
+        }
+        & button {
+            background-color: #D8D8D8;
+            border: none;
+            border-radius: 2px;
+            width: 272px;
+            height: 50px;
+            padding: 8px 15px;
+            font-family: 'Space Mono';
+            font-size: 12px;
+            color:  #000000;
+            transition: background-color 0.4s, color 0.4s;
+            &:hover {
+                background-color: #000000;
+                color: #ffffff;
+                cursor: pointer;
+            }
+        }
+    }
+    &-nav {
+        width: 50vw;
+    }
+}
+.single-photo-other-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: last baseline;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.nav-prev, .nav-next {
+    position: relative;
+    display: inline-block;
+}
+.nav-prev .thumb-preview, .nav-next .thumb-preview {
+    display: none;
+    position: absolute;
+    bottom: 12px; 
+    right: 0;
+}
+.nav-prev:hover .thumb-preview, .nav-next:hover .thumb-preview {
+    display: block;
+}
+.single-photo-alsolike {
+    margin-top: 70px;
+    &-title{
+        @include third-title-desktop;
+        font-style: normal;
+        margin-bottom: 50px;
+    }
 }
 
 /****** Responsive mobile ******/

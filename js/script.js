@@ -50,3 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+// Champ ref photo prérempli //
+jQuery(document).ready(function($) {
+    $('.single-photo-other-contact-button').on('click', function() {
+        let reference = $(this).data('reference');
+        $('#ref-photo').val(reference);
+    });
+});
