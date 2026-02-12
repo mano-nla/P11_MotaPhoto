@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-	<main> 
+<main> 
 	<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 		<section class="single-photo"> 
 			<div class="single-photo-content"> 
@@ -60,12 +60,37 @@
 				</div>
 			</div>
 		</section>
+	<?php endwhile; endif; ?>
 		<section class="single-photo-alsolike">  
 			<h2 class="single-photo-alsolike-title">Vous aimerez aussi</h2>
-			<div class="single-photo-alsolike-photo"> 
-
+			<div class="single-photo-alsolike-grid"> 
+				<?php
+					$terms = get_the_terms( get_the_ID(), 'categorie' );
+					if ( $terms && ! is_wp_error( $terms ) ) {
+    					$term_ids = wp_list_pluck( $terms, 'term_id' );
+    					$args = array(
+        					'post_type'      => 'photos',
+        					'posts_per_page' => 2,
+							'orderby' 		 => 'rand',
+        					'post__not_in'   => array( get_the_ID() ),
+        					'tax_query'      => array(
+            					array(
+                					'taxonomy' => 'categorie',
+                					'field'    => 'term_id',
+                					'terms'    => $term_ids,
+            					),
+        					),
+    					);
+						$my_query = new WP_Query( $args );
+						if( $my_query->have_posts() ) {
+							while( $my_query->have_posts() ) { 
+								$my_query->the_post();
+        						get_template_part( 'templates_part/photo-block' );
+							}
+						}
+						wp_reset_postdata();
+					}?>
 			</div>
 		</section>
-	<?php endwhile; endif; ?>
-	</main>
+</main>
 <?php get_footer(); ?>

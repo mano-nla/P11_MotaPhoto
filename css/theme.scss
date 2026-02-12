@@ -339,8 +339,73 @@ main {
         font-style: normal;
         margin-bottom: 50px;
     }
+    &-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;   
+    }
 }
 
+/****** Mise en page bloc photo ******/
+.photo-block {
+    height: 495px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &-overlay{
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        &-eye {
+            width: 46px;
+            height: 32px;
+            position:absolute;
+            left: 50%;
+	        transform: translateX(-50%);  
+        }
+        &-fullscreen {
+            width: 34px;
+            height: 34px;
+            position: absolute;
+            right: 18px;
+            top: 11px;
+        }
+        &-reference {
+            font-family: 'Poppins'; 
+            font-weight: 500;
+            font-size: 14px; 
+            color: #ffffff;
+            text-transform: uppercase;
+            position: absolute;
+            left: 18px;
+            bottom: 11px;
+        }
+        &-category {
+            font-family: 'Poppins'; 
+            font-weight: 500;
+            font-size: 14px; 
+            color: #ffffff;
+            text-transform: uppercase;
+            position: absolute;
+            right: 18px;
+            bottom: 11px;
+        }
+    }
+}
+.photo-block:hover .photo-block-overlay {
+    opacity: 1;
+}
 /****** Responsive mobile ******/
 @media (max-width: 480px) {
     .footer {
