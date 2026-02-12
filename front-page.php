@@ -1,11 +1,11 @@
 <?php get_header(); ?>
+<section class="front-page-hero"> 
+	<h1> Photographe Event </h1>
+</section>
+<section class="front-page-filter"> 
+	
+</section>
+<section class="front-page-photo"> 
 
-	<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-    
-    	<h1><?php get_the_title(); ?></h1>
-    
-    	<?php the_content(); ?>
-
-	<?php endwhile; endif; ?>
-
+</section>
 <?php get_footer(); ?>

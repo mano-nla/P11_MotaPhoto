@@ -446,6 +446,21 @@ main {
 .photo-block:hover .photo-block-overlay {
     opacity: 1;
 }
+
+/****** Mise en page front-page ******/
+.front-page-hero {
+    background-image: url(../assets/img/nathalie-7.jpeg); 
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    & h1 {  
+        color: transparent; 
+        -webkit-text-stroke: 3px #ffffff;
+    }
+}
 /****** Responsive mobile ******/
 @media (max-width: 480px) {
     h1 { @include main-title-mobile; }
