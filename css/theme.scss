@@ -72,6 +72,46 @@
     font-size: 14px;
     color: #000000;
 }
+@mixin main-title-mobile {
+    font-family: 'Space Mono';
+    font-weight: 700;
+    font-style: italic;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin second-title-mobile {
+    font-family: 'Space Mono';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 46px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin third-title-mobile {
+    font-family: 'Space Mono';
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin description-photo-mobile {
+    font-family: 'Space Mono';
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+@mixin paragraphe-mobile {
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 14px;
+    color: #000000;
+}
 
 h1 { @include main-title-desktop; }
 h2 { @include second-title-desktop; }
@@ -339,9 +379,8 @@ main {
         font-style: normal;
         margin-bottom: 50px;
     }
-    &-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    &-flex {
+        display: flex;
         gap: 20px;   
     }
 }
@@ -408,6 +447,10 @@ main {
 }
 /****** Responsive mobile ******/
 @media (max-width: 480px) {
+    h1 { @include main-title-mobile; }
+    h2 { @include second-title-mobile; }
+    h3 { @include third-title-mobile; }
+    p  { @include paragraphe-mobile; }
     .footer {
         display: flex;
         flex-direction: column;
@@ -434,6 +477,7 @@ main {
     .header {
         display: flex;
         justify-content: space-between;
+        position: static;
         padding: 25px 40px;
         &-logo {
             height: 9px;
@@ -539,5 +583,60 @@ main {
     }
     .wpcf7 form .wpcf7-response-output  {
         margin-top: 0;
+    }
+    /* Single-photos responsive */
+    main {
+        margin: 20px 55px;
+    }
+    .single-photo-content {
+        display: flex; 
+        flex-direction: column-reverse;
+        gap: 20px; 
+        &-description { 
+            width: 100%; 
+            padding-bottom: 25px;
+            & h1 { 
+                @include second-title-mobile; 
+                margin-bottom: 15px; 
+                margin-top: 20px;
+                line-height: 48px; 
+            } 
+            & p { 
+                @include description-photo-mobile;  
+                margin-bottom: 15px; } 
+        } 
+        &-photo { 
+            width: 100%; 
+        }
+    }
+    .single-photo-other {
+        &-contact {
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            & h2 {
+                @include paragraphe-mobile;
+            }
+        }
+    }
+    .single-photo-other-nav {
+        display: none;
+    }
+    .single-photo-alsolike {
+        margin-top: 24px;
+        &-title {
+            @include third-title-mobile;  
+            margin-bottom: 20px; 
+        } 
+        &-flex { 
+            display: flex; 
+            flex-direction: column;  
+        }
+    }
+    .photo-block {
+    height: 278px;
     }
 }

@@ -63,7 +63,7 @@
 	<?php endwhile; endif; ?>
 		<section class="single-photo-alsolike">  
 			<h2 class="single-photo-alsolike-title">Vous aimerez aussi</h2>
-			<div class="single-photo-alsolike-grid"> 
+			<div class="single-photo-alsolike-flex"> 
 				<?php
 					$terms = get_the_terms( get_the_ID(), 'categorie' );
 					if ( $terms && ! is_wp_error( $terms ) ) {

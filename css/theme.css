@@ -351,9 +351,8 @@ main {
   font-style: normal;
   margin-bottom: 50px;
 }
-.single-photo-alsolike-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.single-photo-alsolike-flex {
+  display: flex;
   gap: 20px;
 }
 
@@ -422,6 +421,35 @@ main {
 
 /****** Responsive mobile ******/
 @media (max-width: 480px) {
+  h1 {
+    font-family: "Space Mono";
+    font-weight: 700;
+    font-style: italic;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  h2 {
+    font-family: "Space Mono";
+    font-weight: 400;
+    font-style: italic;
+    font-size: 46px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  h3 {
+    font-family: "Space Mono";
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  p {
+    font-family: "Poppins";
+    font-weight: 300;
+    font-size: 14px;
+    color: #000000;
+  }
   .footer {
     display: flex;
     flex-direction: column;
@@ -447,6 +475,7 @@ main {
   .header {
     display: flex;
     justify-content: space-between;
+    position: static;
     padding: 25px 40px;
   }
   .header-logo {
@@ -548,5 +577,75 @@ main {
   }
   .wpcf7 form .wpcf7-response-output {
     margin-top: 0;
+  }
+  /* Single-photos responsive */
+  main {
+    margin: 20px 55px;
+  }
+  .single-photo-content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .single-photo-content-description {
+    width: 100%;
+    padding-bottom: 25px;
+  }
+  .single-photo-content-description h1 {
+    font-family: "Space Mono";
+    font-weight: 400;
+    font-style: italic;
+    font-size: 46px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    line-height: 48px;
+  }
+  .single-photo-content-description p {
+    font-family: "Space Mono";
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 15px;
+  }
+  .single-photo-content-photo {
+    width: 100%;
+  }
+  .single-photo-other-contact {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .single-photo-other-contact h2 {
+    font-family: "Poppins";
+    font-weight: 300;
+    font-size: 14px;
+    color: #000000;
+  }
+  .single-photo-other-nav {
+    display: none;
+  }
+  .single-photo-alsolike {
+    margin-top: 24px;
+  }
+  .single-photo-alsolike-title {
+    font-family: "Space Mono";
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  .single-photo-alsolike-flex {
+    display: flex;
+    flex-direction: column;
+  }
+  .photo-block {
+    height: 278px;
   }
 }/*# sourceMappingURL=theme.css.map */
