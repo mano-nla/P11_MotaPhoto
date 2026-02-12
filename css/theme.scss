@@ -379,8 +379,9 @@ main {
         font-style: normal;
         margin-bottom: 50px;
     }
-    &-flex {
-        display: flex;
+    &-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 20px;   
     }
 }
@@ -631,9 +632,10 @@ main {
             @include third-title-mobile;  
             margin-bottom: 20px; 
         } 
-        &-flex { 
-            display: flex; 
-            flex-direction: column;  
+        &-grid { 
+            display: grid; 
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
         }
     }
     .photo-block {

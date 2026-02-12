@@ -351,8 +351,9 @@ main {
   font-style: normal;
   margin-bottom: 50px;
 }
-.single-photo-alsolike-flex {
-  display: flex;
+.single-photo-alsolike-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
@@ -641,9 +642,10 @@ main {
     color: #000000;
     margin-bottom: 20px;
   }
-  .single-photo-alsolike-flex {
-    display: flex;
-    flex-direction: column;
+  .single-photo-alsolike-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
   }
   .photo-block {
     height: 278px;
