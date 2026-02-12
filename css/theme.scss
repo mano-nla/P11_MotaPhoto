@@ -118,6 +118,10 @@ h2 { @include second-title-desktop; }
 h3 { @include third-title-desktop; }
 p  { @include paragraphe-desktop; }
 
+body {
+    margin: 0;
+}
+
 /****** Mise en page des menus header et footer desktop ******/
 .header {
     display : flex;
@@ -452,7 +456,7 @@ main {
     background-image: url(../assets/img/nathalie-7.jpeg); 
     background-size: cover; 
     background-position: center; 
-    height: 100vh; 
+    height: 80vh; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -460,6 +464,11 @@ main {
         color: transparent; 
         -webkit-text-stroke: 3px #ffffff;
     }
+}
+.front-page-photo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;        
+    gap: 20px; 
 }
 /****** Responsive mobile ******/
 @media (max-width: 480px) {
