@@ -58,3 +58,46 @@ jQuery(document).ready(function($) {
         $('#ref-photo').val(reference);
     });
 });
+
+// Chargement des photos sur la page d'accueil en Ajax //
+jQuery(document).ready(function($) {
+    
+    $('.front-page-load-more').on('click', function(e) {
+        e.preventDefault();
+
+        const button = $(this);
+        const ajaxurl = button.data('ajaxurl');
+        let page = button.data('page');
+        page++;
+
+        const data = {
+            action: button.data('action'),
+            nonce: button.data('nonce'),
+            page: page
+        };
+
+        fetch(ajaxurl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Cache-Control': 'no-cache',
+            },
+            body: new URLSearchParams(data),
+        })
+        .then(response => response.json())
+        .then(response => {
+
+            if (!response.success) {
+                button.hide();
+                return;
+            }
+
+            // Ajouter le HTML à la fin
+            $('.front-page-photo').append(response.data);
+
+            // Mettre à jour la page
+            button.data('page', page);
+        });
+    });
+
+});
