@@ -30,13 +30,37 @@ function front_page_load_more() {
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
-    $args = array(
-        'post_type'      => 'photos',
-        'posts_per_page' => 8,
-        'paged'          => $paged,
-		'orderby' => 'date',
-        'order'   => 'ASC',
+    $tax_query = array('relation' => 'AND');
+
+if(!empty($_POST['categorie'])){
+    $tax_query[] = array(
+        'taxonomy' => 'categorie',
+        'field'    => 'slug',
+        'terms'    => sanitize_text_field($_POST['categorie']),
     );
+}
+
+if(!empty($_POST['format'])){
+    $tax_query[] = array(
+        'taxonomy' => 'format',
+        'field'    => 'slug',
+        'terms'    => sanitize_text_field($_POST['format']),
+    );
+}
+
+$order = isset($_POST['order']) ? $_POST['order'] : 'ASC';
+
+$args = array(
+    'post_type'      => 'photos',
+    'posts_per_page' => 8,
+    'paged'          => $paged,
+    'orderby'        => 'date',
+    'order'          => $order,
+);
+
+if(count($tax_query) > 1){
+    $args['tax_query'] = $tax_query;
+}
 
     $query = new WP_Query($args);
 
@@ -45,6 +69,59 @@ function front_page_load_more() {
         ob_start();
 
         while ($query->have_posts()) {
+            $query->the_post();
+            get_template_part('templates_part/photo-block');
+        }
+
+        wp_reset_postdata();
+
+        wp_send_json_success(ob_get_clean());
+    }
+
+    wp_send_json_error();
+}
+
+// Filtrage et triage des photos sur la front page //
+add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+
+function filter_photos(){
+
+    $tax_query = array('relation' => 'AND');
+
+    if(!empty($_POST['categorie'])){
+        $tax_query[] = array(
+            'taxonomy' => 'categorie',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($_POST['categorie']),
+        );
+    }
+
+    if(!empty($_POST['format'])){
+        $tax_query[] = array(
+            'taxonomy' => 'format',
+            'field'    => 'slug',
+            'terms'    => sanitize_text_field($_POST['format']),
+        );
+    }
+
+    $order = isset($_POST['order']) ? $_POST['order'] : 'ASC';
+
+    $args = array(
+        'post_type'      => 'photos',
+        'posts_per_page' => 8,
+        'orderby'        => 'date',
+        'order'          => $order,
+        'tax_query'      => count($tax_query) > 1 ? $tax_query : '',
+    );
+
+    $query = new WP_Query($args);
+
+    if($query->have_posts()){
+
+        ob_start();
+
+        while($query->have_posts()){
             $query->the_post();
             get_template_part('templates_part/photo-block');
         }

@@ -4,7 +4,50 @@
 </section>
 <main>
 	<section class="front-page-filter"> 
-	
+		<form id="photo-filter" action="<?php echo admin_url( 'admin-ajax.php' ); ?>" method="post" >
+			<div class="front-page-filter-left">
+				<div class="front-page-filter-flexbox">
+					<label for="categorie">Catégories</label>
+    				<select name="categorie" id="categorie">
+						<option value=""></option>
+        				<?php
+        				$categories = get_terms(array(
+            				'taxonomy' => 'categorie',
+            				'hide_empty' => false,
+        				));
+						foreach ($categories as $cat) {
+            				echo '<option value="' . $cat->slug . '">' . $cat->name . '</option>';
+        				}
+        				?>
+    				</select>
+				</div>
+				<div class="front-page-filter-flexbox">
+					<label for="format">Formats</label>
+    				<select name="format" id="format">
+						<option value=""></option>
+        				<?php
+        				$formats = get_terms(array(
+            				'taxonomy' => 'format',
+            				'hide_empty' => false,
+        				));
+        				foreach ($formats as $format) {
+            				echo '<option value="' . $format->slug . '">' . $format->name . '</option>';
+        				}
+        				?>
+    				</select>
+				</div>
+			</div>
+			<div class="front-page-filter-right">
+				<div class="front-page-filter-flexbox">
+					<label for="date">Trier par</label>
+    				<select name="date" id="date">
+						<option value=""></option>
+        				<option value="DESC">Plus récentes</option>
+        				<option value="ASC">Plus anciennes</option>
+    				</select>
+				</div>
+			</div>
+		</form>
 	</section>
 	<section class="front-page-photo"> 
 		<?php
