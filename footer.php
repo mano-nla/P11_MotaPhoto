@@ -4,6 +4,7 @@
 </footer>
 
 <?php get_template_part('templates_part/contact-modale'); ?>
+<?php get_template_part('templates_part/photo-lightbox'); ?>
 
 <?php wp_footer(); ?>
 </body>

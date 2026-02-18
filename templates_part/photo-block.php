@@ -4,9 +4,13 @@
         <a href="<?php echo esc_url( get_permalink() ); ?>" class="photo-block-overlay-eye">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/eye_icon.png" alt="Voir le détail de la photo">
         </a>
-        <a href="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" class="photo-block-overlay-fullscreen">
+        <a href="#" class="photo-block-overlay-fullscreen"
+            data-image="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>"
+            data-category="<?php echo esc_attr( get_the_term_list( get_the_ID(), 'categorie', '', ', ' ) ); ?>"
+            data-reference="<?php echo esc_attr( get_field('reference') ); ?>"
+        >
             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fullscreen_icon.png" alt="Voir la photo en plein écran">
-        </a>
+        </a>        
         <span class="photo-block-overlay-reference">
             <?php echo get_post_meta( get_the_ID(), 'reference', true ); ?>        
         </span>

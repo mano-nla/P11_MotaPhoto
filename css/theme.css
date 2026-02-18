@@ -504,6 +504,102 @@ main {
   cursor: pointer;
 }
 
+/****** light box photo ******/
+.lightbox {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.lightbox-content {
+  display: inline-block;
+}
+.lightbox-content img {
+  display: block;
+  max-height: 90vh;
+}
+.lightbox-info {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.lightbox-info p {
+  margin: 4px 0;
+}
+
+.lightbox-close {
+  background-image: url(../assets/img/lightbox_close.svg);
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  border: none;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+.lightbox-next {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1010;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-family: "Space Mono";
+  font-size: 12px;
+}
+
+.lightbox-prev {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1010;
+  transform: translateY(-50%);
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-family: "Space Mono";
+  font-size: 12px;
+}
+
+.lightbox-info-categorie a, .lightbox-info-reference {
+  font-family: "Space mono";
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: default;
+}
+
 /****** Responsive mobile ******/
 @media (max-width: 480px) {
   h1 {
@@ -552,6 +648,9 @@ main {
   }
   .footer p {
     margin: 0;
+  }
+  .photo-block-overlay-fullscreen {
+    display: none;
   }
   /* Menu burger responsive */
   .header-menu-container {
