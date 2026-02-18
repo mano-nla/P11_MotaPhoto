@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const triggers = document.querySelectorAll('.photo-block-overlay-fullscreen');
     const lightbox = document.querySelector('.lightbox');
     const lightboxImage = document.querySelector('.lightbox-container img');
     const closeBtn = document.querySelector('.lightbox-close');

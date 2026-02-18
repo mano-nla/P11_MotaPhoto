@@ -7,8 +7,7 @@
         <a href="#" class="photo-block-overlay-fullscreen"
             data-image="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>"
             data-category="<?php echo esc_attr( get_the_term_list( get_the_ID(), 'categorie', '', ', ' ) ); ?>"
-            data-reference="<?php echo esc_attr( get_field('reference') ); ?>"
-        >
+            data-reference="<?php echo esc_attr( get_field('reference') ); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/fullscreen_icon.png" alt="Voir la photo en plein écran">
         </a>        
         <span class="photo-block-overlay-reference">
